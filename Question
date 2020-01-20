@@ -68,4 +68,70 @@ int main(){
 
 
 
-2. 
+2. https://practice.geeksforgeeks.org/problems/job-sequencing-problem/0(Job sequence Problem)
+
+#include<bits/stdc++.h>
+using namespace std;
+#define inf 100000000000000000
+#define ll long long int
+#define pb push_back
+#define f first
+#define s second
+#define mod 1000000007
+#define fast ios_base::sync_with_stdio(false),cin.tie(NULL),cout.tie(NULL)
+void mahakal(){
+	#ifndef ONLINE_JUDGE
+	freopen("input.txt","r",stdin);
+	freopen("output.txt","w",stdout);
+	freopen("error.txt","w",stderr);
+	#endif
+}
+
+struct navin{
+	ll id,dead,prof;
+};
+
+bool cmp(navin s1 , navin s2){
+	return s1.prof>s2.prof;
+}
+
+int main(){
+	// mahakal();
+	fast;
+
+	ll t;
+	cin>>t;
+	while(t--){
+		ll n;
+		cin>>n;
+		navin arr[n];
+		for(ll i=0;i<n;i++){
+			cin>>arr[i].id>>arr[i].dead>>arr[i].prof;
+		}
+		sort(arr , arr+n , cmp );
+		bool slot[n+1];
+		for(ll i=0;i<=n;i++)slot[i]=false;
+		
+		ll cnt=0,ans=0;
+
+		for(ll i=0;i<n;i++){
+			for(ll j=min(n,arr[i].dead)-1;j>=0 ;j--){
+				if(slot[j]==false){
+					ans+=arr[i].prof;
+					slot[j]=1;
+					cnt++;
+					break;
+				}
+			}
+		}
+		cout<<cnt<<" "<<ans<<endl;
+	}
+
+	return 0;
+}
+
+
+
+3.
+
+
