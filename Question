@@ -182,6 +182,63 @@ int main(){
 	return 0;
 }
 
-4. 
+4. Job Selection Problem – Loss Minimization Strategy | Set 2(https://www.geeksforgeeks.org/job-selection-problem-loss-minimization-strategy-set-2/)
+
+
+#include<bits/stdc++.h>
+using namespace std;
+#define inf 100000000000000000
+#define ll long long int
+// #define long double long double 
+#define pb push_back
+#define f first
+#define s second
+#define mod 1000000007
+#define fast ios_base::sync_with_stdio(false),cin.tie(NULL),cout.tie(NULL)
+void mahakal(){
+	#ifndef ONLINE_JUDGE
+	freopen("input.txt","r",stdin);
+	freopen("output.txt","w",stdout);
+	freopen("error.txt","w",stderr);
+	#endif
+}
+
+int main(){
+	mahakal();fast;
+
+	ll t;
+	cin>>t;
+	while(t--){
+		ll n;
+		cin>>n;
+		vector<ll>vec;
+		vec.pb(0);
+		priority_queue<ll , vector<ll> , greater<ll>> pq;
+		for(ll i=0 , a ; i<n ;i++){
+			cin>>a;
+			pq.push(a);
+		}
+		while(pq.size()){
+			ll x= pq.top();
+			pq.pop();
+			cout<<x<<" ";
+			vec.pb(x);
+		}
+		long double ans=0;
+		long double p;
+		cin>>p;
+		p=p/100;
+		for(ll i=n;i>=1 ; i--){
+			ans+= vec[i]*pow(1-p,n-i);
+			// cerr<<p<<" ";
+		}
+		cout<<endl;
+		cout<<ans<<endl;
+	}
+
+	return 0;
+}
+
+5. 
 
 
