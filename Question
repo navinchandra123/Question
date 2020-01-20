@@ -1,3 +1,71 @@
 ///////////Greedy///////////
+
+
 1. https://practice.geeksforgeeks.org/problems/n-meetings-in-one-room/0(activity selection)
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+#define inf 100000000000000000
+#define ll long long int
+#define pb push_back
+#define f first
+#define s second
+#define mod 1000000007
+#define fast ios_base::sync_with_stdio(false),cin.tie(NULL),cout.tie(NULL)
+void mahakal(){
+	#ifndef ONLINE_JUDGE
+	freopen("input.txt","r",stdin);
+	freopen("output.txt","w",stdout);
+	freopen("error.txt","w",stderr);
+	#endif
+}
+struct navin{
+	ll x;
+	ll y , idx;
+};
+
+bool cmp(navin s1 , navin s2){
+	return s1.y<s2.y;
+}
+
+int main(){
+	// mahakal();
+	fast;
+
+	ll t;
+	cin>>t;
+	while(t--){
+		ll n;
+		cin>>n;
+		navin vec[n+1];
+		for(ll i=0;i<n;i++){
+			cin>>vec[i].x;
+		}
+		for(ll i=0;i<n;i++){
+			cin>>vec[i].y;
+			vec[i].idx=(i+1);
+		}
+		sort(vec,vec+n,cmp);
+		ll cnt=1;
+		ll ps=vec[0].y;
+		cout<<vec[0].idx<<" ";
+		for(ll i=1;i<n;i++){
+			if(vec[i].x>ps){
+				cnt++;
+				ps=vec[i].y;
+				cout<<vec[i].idx<<" ";
+			}
+			// cerr<<vec[i].f<<" "<<vec[i].s<<endl;
+		}
+		cout<<endl;
+		// cout<<cnt<<endl;
+	}
+
+	return 0;
+}
+
+
+
 2. 
