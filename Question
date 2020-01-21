@@ -459,4 +459,58 @@ int main(){
 	return 0;
 }
 
-9.  
+9.  Maximum sum of absolute difference of an array(https://www.geeksforgeeks.org/maximum-sum-absolute-difference-array/)
+
+
+#include<bits/stdc++.h>
+using namespace std;
+#define inf 100000000000000000
+#define ll long long int
+#define pb push_back
+#define f first
+#define s second
+#define mod 1000000007
+#define fast ios_base::sync_with_stdio(false),cin.tie(NULL),cout.tie(NULL)
+void mahakal(){
+	#ifndef ONLINE_JUDGE
+	freopen("input.txt","r",stdin);
+	freopen("output.txt","w",stdout);
+	freopen("error.txt","w",stderr);
+	#endif
+}
+
+int main(){
+	mahakal();fast;
+
+	ll t;
+	cin>>t;
+	while(t--){
+		ll n;
+		cin>>n;
+		ll arr[n];
+		for(ll i=0;i<n;i++){
+			cin>>arr[i];
+		}
+		sort(arr,arr+n);
+		vector<ll> vec;
+		ll i=0 , j= n-1;
+		while(j>i){
+			vec.pb(arr[i]);
+			vec.pb(arr[j]);
+			j--;i++;
+		}
+		if(n&1){
+			vec.pb(arr[n/2]);
+		}
+		ll sum=0;
+		for(ll i=0;i<n-1 ;i++){
+			sum+=(abs(vec[i]-vec[i+1]));
+		}
+		sum+=(abs(vec[n-1]-vec[0]));
+		cout<<sum<<endl;
+	}
+
+	return 0;
+}
+
+9. 
