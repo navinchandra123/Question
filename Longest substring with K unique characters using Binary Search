@@ -1,0 +1,82 @@
+// https://www.geeksforgeeks.org/longest-substring-with-k-unique-characters-using-binary-search/
+
+#include<bits/stdc++.h>
+using namespace std;
+#define inf 100000000000000000
+#define ll long long int
+#define pb push_back
+#define f first
+#define s second
+#define mod 1000000007
+#define fast ios_base::sync_with_stdio(false),cin.tie(NULL),cout.tie(NULL)
+void mahakal(){
+	#ifndef ONLINE_JUDGE
+	freopen("input.txt","r",stdin);
+	freopen("output.txt","w",stdout);
+	freopen("error.txt","w",stderr);
+	#endif
+}
+
+bool check(string str , ll k , ll mid){
+	ll left=0;
+	ll n = str.length();
+	unordered_map<char , int > mp;
+	for(left=0 ;left<mid;left++){
+		mp[str[left]]++;
+	}
+	if(mp.size()<=k){
+		return true ;
+	}
+	for( ; left<n;left++){
+		mp[str[left]]++;
+		mp[str[left-mid]]--;
+		if(mp[str[left-mid]]==0){
+			mp.erase(str[left-mid]);
+		}
+		if(mp.size()<=k){
+			return true;
+		}
+	}
+	return mp.size()<=k;
+}
+
+int main(){
+	mahakal();fast;
+
+	ll t;
+	cin>>t;
+	while(t--){
+		string str;
+		ll k ;
+		cin>>str>>k;
+		ll l =0 , r= str.length()+1;
+		ll ans=-1;
+
+		set<char> st;
+
+		for(ll i=0 ;i<r-1;i++){
+			st.insert(str[i]);
+		}
+
+
+		if(st.size()<k){
+			cout<<-1<<endl;
+			continue;
+		}
+
+		while(r-l>1){
+			ll mid=(l+r)/2;
+			bool ps = check(str,k,mid);
+			if(ps){
+				ans=mid;
+				l=mid;
+			}
+			else{
+				r=mid;
+			}
+		}
+		cout<<ans<<endl;
+	}
+
+	return 0;
+}
