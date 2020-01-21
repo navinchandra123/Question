@@ -619,4 +619,69 @@ int main(){
 	return 0;
 }
 
-11. 
+
+11. Split n into maximum composite numbers(https://www.geeksforgeeks.org/split-n-maximum-composite-numbers/)
+
+
+#include<bits/stdc++.h>
+using namespace std;
+#define inf 100000000000000000
+#define ll long long int
+#define pb push_back
+#define f first
+#define s second
+#define mod 1000000007
+#define fast ios_base::sync_with_stdio(false),cin.tie(NULL),cout.tie(NULL)
+void mahakal(){
+	#ifndef ONLINE_JUDGE
+	freopen("input.txt","r",stdin);
+	freopen("output.txt","w",stdout);
+	freopen("error.txt","w",stderr);
+	#endif
+}
+
+int main(){
+	mahakal();fast;
+
+	ll t;
+	cin>>t;
+	while(t--){
+		ll n ;
+		cin>>n;
+		if(n<4){
+			cout<<-1<<endl;
+		}
+		else if (n%4==0){
+			cout<<n/4<<endl;
+		}
+		else if(n%4==1){
+			if(n<9){
+				cout<<-1<<endl;
+			}
+			else{
+				cout<<(n-9)/4+1<<endl;
+			}
+		}
+		else if(n%4==2){
+			if(n<6){
+				cout<<-1<<endl;
+			}
+			else{
+				cout<<(n-6)/4+1<<endl;
+			}
+		}
+		else{
+			if(n<15){
+				cout<<-1<<endl;
+			}
+			else{
+				cout<<(n-15)/4+2<<endl;
+			}
+		}
+	}
+
+	return 0;
+}
+
+
+12.  
