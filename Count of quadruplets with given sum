@@ -1,0 +1,90 @@
+// https://www.geeksforgeeks.org/count-of-quadruplets-with-given-sum-set-3/
+
+#include<bits/stdc++.h>
+using namespace std;
+#define inf 100000000000000000
+#define ll long long int
+#define pb push_back
+#define f first
+#define s second
+#define mod 1000000007
+#define fast ios_base::sync_with_stdio(false),cin.tie(NULL),cout.tie(NULL)
+void mahakal(){
+	#ifndef ONLINE_JUDGE
+	freopen("input.txt","r",stdin);
+	freopen("output.txt","w",stdout);
+	freopen("error.txt","w",stderr);
+	#endif
+}
+
+bool search(ll x , vector<ll>& vec , ll l ,ll r){
+	while(l<=r){
+		ll mid=(l+r)/2;
+		if(vec[mid]==x){
+			return true ;
+		}
+		else if(vec[mid]<x){
+			l = mid+1;
+		}
+		else{
+			r = mid-1;
+		}
+	}
+	return false;
+}
+
+bool check(ll x , vector<ll>& vec){
+	ll n= vec.size();
+	ll ps=search(x , vec , 0 , n-1);
+	return ps;
+}
+
+int main(){
+	mahakal();fast;
+
+	ll t;
+	cin>>t;
+	while(t--){
+		ll a,b,c,d;
+		cin>>a>>b>>c>>d;
+		ll A[a],B[b],C[c],D[d];
+
+		for(ll i=0;i<a;i++){
+			cin>>A[i];
+		}
+		for(ll i=0;i<b;i++){
+			cin>>B[i];
+		}
+		for(ll i=0;i<c;i++){
+			cin>>C[i];
+		}
+		for(ll i=0; i<d ;i++){
+			cin>>D[i];
+		}
+		vector<ll> vec1 , vec2;
+
+		for(ll i=0;i<a;i++){
+			for(ll j=0 ;j< b ;j++){
+				vec1.pb(A[i]+B[j]);
+			}
+		}
+		for(ll i=0;i<c;i++){
+			for(ll j=0 ; j< d ;j++){
+				vec2.pb(C[i]+D[i]);
+			}
+		}
+		sort(vec2.begin(), vec2.end());
+		ll cnt=0;
+		for(ll i=0 ;i< vec1.size();i++){
+			bool ps=check(-vec1[i],vec2);
+			if(ps){
+				cnt++;
+			}
+		}
+
+		cout<<cnt<<endl;
+
+	}
+
+	return 0;
+}
